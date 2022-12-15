@@ -28,6 +28,7 @@ button:hover{
     background: url('Rectangle\ 58.png');
     min-height: 900px;
     width: 100%;
+    position: relative;
     display: flex;
     flex-direction: column;
     border-bottom: 3px dashed #e1e1e1;
@@ -36,6 +37,7 @@ button:hover{
     display: flex;
     justify-content: center;
     width: 100%;
+    position: relative;
 }
 .header__nav-menu-block{
     width: 1134px;
@@ -53,7 +55,41 @@ button:hover{
     list-style-type: none;
     max-width: 600px;
     width:100%;
+    transition:transform .2s opacity .1s;
 }
+
+.open__menu{
+    display: none;
+}
+@media all and (max-width:845px) {
+    .open__menu{
+        position: absolute;
+        right:10px;
+        display: block;
+        z-index:1;
+    }
+    .header__nav-menu-block{
+        justify-content: center;
+    }
+    .header__nav-menu {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    .header__nav-menu.active {
+        opacity: 1;
+        transform: translateY(0);
+        position: absolute;
+        top:0;
+        flex-direction: column;
+        align-items: center;
+        background-color:rgba(220,220,220,.5);
+        backdrop-filter: blur(5px);
+        width:50%;
+        height: 50vh;
+    }
+}
+
+
 
 .header__nav-menu__option {
     cursor: pointer;
@@ -104,13 +140,15 @@ button:hover{
     width: 100%;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content:space-around;
     align-items: center;
 }
-@media all {
-    .hero-wrapper{
-        flex-wrap: wrap;
-    }
+.hero-background{
+    z-index: -1;
+    position: absolute;
+    top:0;
+    left:0;
 }
 .hero-page-info{    
     display: flex;
@@ -119,7 +157,6 @@ button:hover{
     width:500px;
     height: 480px;
 }
-
 .quote{
     display: flex;
     align-items: center;
@@ -186,7 +223,7 @@ button:hover{
 
 .main-services{
     max-width: 100%;
-    padding: 0 clamp(0.313rem, -8.476rem + 27.04vw, 16.875rem);
+    padding:0 clamp(0.625rem, -37.641rem + 64.79vw, 15rem);
     /* display: grid; 
     grid-template-columns: 200px 200px 1fr 200px 200px; 
     grid-template-rows: 200px 200px 200px 200px; 
@@ -274,10 +311,15 @@ button:hover{
 } */
 .main-services-service-pretitle{
     font-family: Poppins;
-    font-size: 16px;
+    font-size:clamp(0.75rem, 0.668rem + 0.41vw, 1rem);
     font-weight: 400;
     line-height: 24px;
     letter-spacing: 0em;
+}
+@media all and (max-width:945px) {
+    .main-services-service-pretitle{
+        text-align: center;
+    }
 }
 .main-products{
     width: 100%;
@@ -299,6 +341,7 @@ button:hover{
     font-size: 16px;
     line-height: 150%;
 }
+
 .swiper {
     width: 520px;
     height: 400px;
@@ -477,21 +520,98 @@ button:hover{
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
+    padding-bottom: 30px;
 }
 .main-quote-author{
+    margin-right: 30px;
+    margin-top: 7px;
     font-weight: 700;
     font-size: 16px;
     line-height: 130%;
 }
 .main-quote-author.s{
+    margin-top: 0;
+    padding:5px 0;
     font-weight: 400;
     font-size: 14px;
     line-height: 160%;
     opacity:.7;
+    position: relative;
+}
+.main-quote-author.s::after{
+    content: '';
+    position: absolute;
+    top:50%;
+    right:-10px;
+    width: 33px;
+    height: 1px;
+    background-color: #01010D;
+    opacity: 0.7;
 }
 .main-quote-block img{
-
+    display: inline-block;
 }
-.{
-    
+.main-quote-author-block{
+    display: inline-block;
+}
+.main-quote-author-b{
+    display: flex;
+    align-items: center;
+}
+
+.footer{
+    padding: 50px 224px 121px 224px;
+    background: #F7F7F7;
+}
+
+.footer-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    gap:10px;
+    justify-content: space-between;
+}
+
+.footer-thumb{
+    max-width: 172px;
+}
+.footer-list{
+    list-style-type: none;
+}
+.footer-list-header{
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 160%;
+}
+.footer-list-ref{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    margin: 25px 0;
+}
+.footer-list-ref.img-block a{
+    padding-right: 27px;
+}
+.footer-list-input{
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 130%;
+    width: 163px;
+    height: 35px;
+    padding: 9px 18px;
+    border: none;
+    border-radius: 6px;
+    position: relative;
+}
+.footer-list-confirmbtn{
+    display: none;
+    cursor: pointer;
+    background-color: #01010D;
+    color:white;
+    padding: 5px 15px;
+    margin-left: 5px;
+}
+
+.footer-list-confirmbtn.active{
+    display: block;
 }
