@@ -31,7 +31,10 @@ footer__input.addEventListener('change', checker);
 
 open__menu.addEventListener('click', ()=>{
   header__navMenu.classList.toggle('active')
+  open__menu.classList.toggle('active')
 })
 window.addEventListener('scroll', ()=>{
-  header__navMenu.classList.remove('active')
+     if (window.scrollY>600){
+      header__navMenu.classList.remove('active')
+     }
 })
